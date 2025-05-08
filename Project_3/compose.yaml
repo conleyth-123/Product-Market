@@ -1,0 +1,50 @@
+services:
+  user:
+    build:
+      context: .
+      dockerfile: services/users/Dockerfile.users
+    container_name: user
+    ports:
+      - "9000:5000"
+    networks:
+      - conleyth
+  products:
+    build:
+      context: .
+      dockerfile: services/products/Dockerfile.products
+    container_name: products
+    ports:
+      - "9001:5000"
+    networks:
+      - conleyth
+  search:
+    build:
+      context: .
+      dockerfile: services/search/Dockerfile.search
+    container_name: search
+    ports:
+      - "9002:5000"
+    networks:
+      - conleyth
+  orders:
+    build:
+      context: .
+      dockerfile: services/orders/Dockerfile.order
+    container_name: orders
+    ports:
+      - "9003:5000"
+    networks:
+      - conleyth
+  logs:
+    build:
+      context: .
+      dockerfile: services/logs/Dockerfile.logs
+    container_name: logs
+    ports:
+      - "9004:5000"
+    networks:
+      - conleyth
+
+networks:
+  conleyth:
+    driver: bridge
